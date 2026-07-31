@@ -5181,6 +5181,174 @@ body{
 
 
 }
+/* ==========================================================
+   RESPONSIVE MOBILE
+========================================================== */
+
+@media (max-width: 768px){
+
+    body{
+
+        overflow-x:hidden;
+
+    }
+
+    .page{
+
+        padding:80px 20px;
+
+    }
+
+    h1{
+
+        font-size:2.3rem;
+
+        line-height:1.2;
+
+    }
+
+    h2{
+
+        font-size:1.7rem;
+
+    }
+
+    .subtitle{
+
+        font-size:1.1rem;
+
+        text-align:center;
+
+    }
+
+    #typing{
+
+        font-size:1rem;
+
+        line-height:1.8;
+
+        padding:0 10px;
+
+    }
+
+    .card{
+
+        width:100%;
+
+        padding:30px 20px;
+
+    }
+
+    #letterText{
+
+        font-size:1rem;
+
+        line-height:2;
+
+    }
+
+    .reason-grid{
+
+        grid-template-columns:1fr;
+
+        gap:20px;
+
+    }
+
+    .reason-card{
+
+        padding:25px;
+
+    }
+
+    .reason-card h3{
+
+        font-size:1.2rem;
+
+    }
+
+    .reason-card p{
+
+        font-size:.95rem;
+
+    }
+
+    #musicBtn{
+
+        width:52px;
+
+        height:52px;
+
+        bottom:20px;
+
+        right:20px;
+
+        font-size:20px;
+
+    }
+
+    #topBtn{
+
+        width:50px;
+
+        height:50px;
+
+        bottom:85px;
+
+        right:20px;
+
+        font-size:20px;
+
+    }
+
+}
+@media (max-width:480px){
+
+    h1{
+
+        font-size:2rem;
+
+    }
+
+    h2{
+
+        font-size:1.5rem;
+
+    }
+
+    .subtitle{
+
+        font-size:1rem;
+
+    }
+
+    .tap{
+
+        font-size:.95rem;
+
+    }
+
+    .card{
+
+        padding:24px 18px;
+
+    }
+
+    #letterText{
+
+        text-align:left;
+
+        font-size:.95rem;
+
+    }
+
+    .reason-card{
+
+        padding:22px 18px;
+
+    }
+
+}
 /* ===========================
    MUSIC BUTTON
 =========================== */
@@ -5225,7 +5393,9 @@ body{
 
 #musicBtn.playing{
 
-    animation:rotateMusic 4s linear infinite;
+    animation:
+        rotateMusic 4s linear infinite,
+        pulseMusic 1.5s ease-in-out infinite;
 
 }
 
@@ -5240,6 +5410,21 @@ body{
     to{
 
         transform:rotate(360deg);
+
+    }
+
+}
+@keyframes pulseMusic{
+
+    0%,100%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
 
     }
 

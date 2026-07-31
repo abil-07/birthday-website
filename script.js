@@ -85,6 +85,7 @@ let letterTyped = false;
 let musicStarted = false;
 
 let heartInterval = null;
+let websiteOpened = false;
 
 /* ==========================================================
    INITIAL SETUP
@@ -198,9 +199,27 @@ function startMusic() {
 
     if (!music) return;
 
-    music.volume = 0.5;
+    music.volume = 0;
 
-    music.play().catch(() => {});
+music.play().catch(() => {});
+
+let volume = 0;
+
+const fade = setInterval(() => {
+
+    volume += 0.02;
+
+    if (volume >= 0.35) {
+
+        volume = 0.35;
+
+        clearInterval(fade);
+
+    }
+
+    music.volume = volume;
+
+}, 120);
 
 }
 
@@ -212,11 +231,18 @@ function launchConfetti() {
 
     if (typeof confetti !== "function") return;
 
+    function launchConfetti() {
+
+    if (typeof confetti !== "function") return;
+
+    // Ledakan utama
     confetti({
 
-        particleCount: CONFIG.confettiParticles,
+        particleCount: 180,
 
         spread: 120,
+
+        startVelocity: 45,
 
         origin: {
             y: 0.65
@@ -224,6 +250,26 @@ function launchConfetti() {
 
     });
 
+    // Ledakan kecil kedua
+    setTimeout(() => {
+
+        confetti({
+
+            particleCount: 80,
+
+            spread: 90,
+
+            startVelocity: 30,
+
+            origin: {
+                y: 0.55
+            }
+
+        });
+
+    }, 350);
+
+}
 }
 
 /* ==========================================================
@@ -231,6 +277,10 @@ function launchConfetti() {
 ========================================================== */
 
 function openWebsite() {
+
+    if (websiteOpened) return;
+
+    websiteOpened = true;
 
     envelope.classList.add("open");
 
